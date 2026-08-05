@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A8C7A">
+  <title>帮老弟找工作 · 资讯分享</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__title">资讯分享</div>
+    <div class="topbar__actions">
+      <button class="iconbtn" id="btnExport">导出</button>
+      <button class="iconbtn" id="btnImport">导入</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 搜索 -->
+    <input type="search" id="search" placeholder="搜平台 / 公司 / 关键词…" style="margin-bottom:10px">
+
+    <!-- 分类筛选 -->
+    <div class="filters" id="filters"></div>
+
+    <section class="section">
+      <div class="section__title">资讯列表 <span class="count" id="infoCount"></span></div>
+      <div id="infoList"></div>
+    </section>
+  </main>
+
+  <input type="file" id="fileImport" accept="application/json" style="display:none">
+
+  <nav class="tabbar">
+    <a class="tab" data-nav="home" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg><span>首页</span></a>
+    <a class="tab" data-nav="info" href="info.html"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8v2H8zM8 11h8v2H8zM8 15h5v2H8z"/></svg><span>资讯</span></a>
+    <a class="tab" data-nav="plan" href="plan.html"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM7 8l2 2 3-3M7 14l2 2 3-3M14 9h3v2h-3zM14 15h3v2h-3z"/></svg><span>计划</span></a>
+  </nav>
+
+  <!-- 资讯走 data/info.json（fetch 加载，支持轮询自动更新） -->
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/info.js"></script>
+</body>
+</html>

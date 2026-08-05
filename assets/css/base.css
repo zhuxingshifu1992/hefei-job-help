@@ -1,0 +1,57 @@
+/* =========================================================
+ * base.css —— 设计变量 / 重置 / 基础排版
+ * 维护：改配色改 :root；改全局字体/边距看 body
+ * ======================================================= */
+:root{
+  /* 主色：医疗陪伴感 青绿 */
+  --c-primary:#1A8C7A;
+  --c-primary-d:#147464;
+  --c-accent:#2F6FED;
+  /* 状态色：红=逾期/支出，绿=完成/收入，橙=提醒 */
+  --c-danger:#E5484D;
+  --c-success:#2BA24C;
+  --c-warn:#E8941A;
+  /* 中性 */
+  --bg:#F4F6F8;
+  --card:#FFFFFF;
+  --text:#1F2933;
+  --text-2:#637084;
+  --text-3:#9AA5B1;
+  --line:#E6EAEF;
+  /* 形状 */
+  --radius:14px;
+  --radius-sm:10px;
+  --shadow:0 1px 3px rgba(20,30,50,.08),0 1px 2px rgba(20,30,50,.04);
+  /* 最小点击区（移动端铁律） */
+  --tap:44px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.55;
+  /* 给底部 Tab 留空间 + 适配安全区 */
+  padding-bottom:calc(64px + env(safe-area-inset-bottom));
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* 输入框：字号≥16px 防止 iOS 自动放大 */
+input,select,textarea{
+  font:inherit;
+  font-size:16px;
+  color:var(--text);
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:#fff;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--c-primary)}
+textarea{resize:vertical;min-height:64px}
+label{display:block;font-size:13px;color:var(--text-2);margin:10px 2px 4px}

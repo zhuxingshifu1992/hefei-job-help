@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A8C7A">
+  <title>帮老弟找工作 · 求职计划</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__title">求职计划</div>
+    <div class="topbar__actions">
+      <button class="iconbtn" id="btnExport">导出</button>
+      <button class="iconbtn" id="btnImport">导入</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 新建计划 -->
+    <section class="section">
+      <div class="section__title">新建短期计划</div>
+      <form class="form-card" id="newPlan">
+        <label>计划名称</label>
+        <input name="title" placeholder="如：8 月接单突破" required>
+        <div style="display:flex;gap:10px">
+          <div style="flex:1"><label>开始日期</label><input name="start" type="date" required></div>
+          <div style="flex:1"><label>结束日期</label><input name="end" type="date" required></div>
+        </div>
+        <label>目标（一句话）</label>
+        <input name="goal" placeholder="如：首月攒 10 条好评">
+        <button class="btn btn--block" type="submit" style="margin-top:12px">创建计划</button>
+      </form>
+    </section>
+
+    <!-- 计划列表 -->
+    <section class="section">
+      <div class="section__title">我的计划</div>
+      <div id="planList"></div>
+    </section>
+
+    <!-- 危险区：清空数据 -->
+    <section class="danger-zone">
+      <button class="btn btn--danger btn--block" id="btnClear">清空全部数据（计划/收藏/已入驻）</button>
+      <p class="hint">清空前建议先点右上角「导出」备份。数据仅存在本机浏览器，换设备不会自动同步。</p>
+    </section>
+  </main>
+
+  <input type="file" id="fileImport" accept="application/json" style="display:none">
+
+  <nav class="tabbar">
+    <a class="tab" data-nav="home" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg><span>首页</span></a>
+    <a class="tab" data-nav="info" href="info.html"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8v2H8zM8 11h8v2H8zM8 15h5v2H8z"/></svg><span>资讯</span></a>
+    <a class="tab" data-nav="plan" href="plan.html"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM7 8l2 2 3-3M7 14l2 2 3-3M14 9h3v2h-3zM14 15h3v2h-3z"/></svg><span>计划</span></a>
+  </nav>
+
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/plan.js"></script>
+</body>
+</html>

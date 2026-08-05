@@ -1,0 +1,119 @@
+/* =========================================================
+ * components.css —— 卡片 / 按钮 / 标签 / 进度环 / 列表 / 表单
+ * 维护：新增组件样式放这里，类名用 BEM（block__el--mod）
+ * ======================================================= */
+
+/* 卡片 */
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);
+}
+.card + .card{margin-top:12px}
+
+/* 按钮 */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:var(--tap);padding:0 16px;
+  border:none;border-radius:var(--radius-sm);
+  background:var(--c-primary);color:#fff;font-size:15px;font-weight:600;
+  cursor:pointer;
+}
+.btn:active{background:var(--c-primary-d)}
+.btn--block{width:100%}
+.btn--ghost{background:#fff;color:var(--c-primary);border:1px solid var(--c-primary)}
+.btn--danger{background:#fff;color:var(--c-danger);border:1px solid var(--c-danger)}
+.btn--sm{min-height:34px;padding:0 12px;font-size:13px}
+
+/* 顶部小图标按钮（导出/导入） */
+.iconbtn{
+  min-height:34px;padding:0 12px;border-radius:var(--radius-sm);
+  border:1px solid var(--line);background:#fff;color:var(--text-2);
+  font-size:13px;cursor:pointer;
+}
+.iconbtn:active{background:var(--bg)}
+
+/* 徽标 / 标签 */
+.badge{
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;
+  background:#EAF6F3;color:var(--c-primary-d);
+}
+.badge--hot{background:#FDECEC;color:var(--c-danger)}
+.badge--warn{background:#FDF3E3;color:var(--c-warn)}
+.badge--overdue{background:#FDECEC;color:var(--c-danger)}
+.badge--today{background:#EAF1FE;color:var(--c-accent)}
+.badge--done{background:#EAF6EE;color:var(--c-success)}
+
+/* 筛选可点标签 */
+.chip{
+  flex:0 0 auto;min-height:36px;padding:0 14px;
+  border:1px solid var(--line);border-radius:999px;
+  background:#fff;color:var(--text-2);font-size:13px;cursor:pointer;white-space:nowrap;
+}
+.chip.is-active{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}
+
+/* 进度环（内联 SVG） */
+.ring{width:46px;height:46px;flex:0 0 auto}
+.ring__bg{fill:none;stroke:var(--line);stroke-width:4}
+.ring__fg{fill:none;stroke:var(--c-primary);stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset .4s}
+.ring__txt{font-size:11px;text-anchor:middle;fill:var(--text);font-weight:600}
+
+/* 星级 */
+.stars{display:inline-flex;gap:1px}
+.star{width:14px;height:14px;fill:var(--line)}
+.star--on{fill:var(--c-warn)}
+
+/* 资讯卡 */
+.info-card{position:relative}
+.info-card__head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.info-card__name{font-size:16px;font-weight:700}
+.info-card__row{margin-top:8px;font-size:13px;color:var(--text-2);display:flex;gap:6px}
+.info-card__row b{color:var(--text);font-weight:600;flex:0 0 64px}
+.info-card__note{margin-top:8px;font-size:12px;color:var(--text-3);background:var(--bg);padding:6px 8px;border-radius:8px}
+.info-card__acts{margin-top:10px;display:flex;gap:8px}
+.mini-toggle{
+  flex:1;min-height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:#fff;color:var(--text-2);font-size:13px;cursor:pointer;
+}
+.mini-toggle.is-on{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}
+
+/* 任务行 */
+.task{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.task__check{
+  width:24px;height:24px;border-radius:50%;border:2px solid var(--line);
+  flex:0 0 auto;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.task__check.is-done{border-color:var(--c-success);background:var(--c-success)}
+.task__check.is-done svg{fill:#fff}
+.task__body{flex:1;min-width:0}
+.task__text{font-size:15px}
+.task.is-done .task__text{color:var(--text-3);text-decoration:line-through}
+.task__meta{font-size:12px;color:var(--text-3);margin-top:2px}
+.task__del{color:var(--text-3);min-width:var(--tap);min-height:var(--tap);background:none;border:none;cursor:pointer;font-size:18px}
+
+/* 今日待处理项 */
+.today-item{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.today-item__body{flex:1}
+.today-item__plan{font-size:11px;color:var(--text-3)}
+
+/* 空状态 */
+.empty{text-align:center;color:var(--text-3);padding:28px 12px;font-size:14px}
+
+/* 统计卡 */
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow)}
+.stat__num{font-size:24px;font-weight:700;color:var(--c-primary)}
+.stat__label{font-size:12px;color:var(--text-2);margin-top:2px}
+
+/* 快捷入口 */
+.quick__item{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);
+}
+.quick__item svg{width:26px;height:26px;fill:var(--c-primary);flex:0 0 auto}
+.quick__item b{font-size:15px}
+.quick__item span{display:block;font-size:11px;color:var(--text-2)}
+
+/* 表单块 */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+.hint{font-size:12px;color:var(--text-3);margin-top:6px}
+.danger-zone{margin-top:24px;border-top:1px dashed var(--line);padding-top:14px}
