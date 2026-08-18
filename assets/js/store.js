@@ -68,24 +68,32 @@ function todayISO() {
 }
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
 
-/* ---------- 预置：30 天接单攒口碑计划 ----------
- * 含 1 条逾期（due 早于今天 2026-08-05）用于演示「今天要处理」 */
+/* ---------- 预置：合肥陪诊师 60 天落地计划（2026秋）----------
+ * 基于 2026-08-18 重新爬取的最新资讯制定，覆盖原 30 天示例计划 */
 function defaultPlan() {
   return {
-    id: "p30",
-    title: "30 天接单攒口碑",
-    start: "2026-08-01",
-    end: "2026-08-31",
-    goal: "先入驻 4 个免费平台，首月攒 10 条好评",
+    id: "p60",
+    title: "合肥陪诊师 60 天落地计划（2026秋）",
+    start: "2026-08-18",
+    end: "2026-10-16",
+    goal: "先入驻 4 个零门槛/本地平台攒首单与好评，同步准备资质冲击大厂与医院稳定单",
     tasks: [
-      { id: uid(), text: "注册悦伴陪诊", due: "2026-08-03", status: "todo", doneDate: null },
-      { id: uid(), text: "注册小豚陪诊（零基础首选）", due: "2026-08-03", status: "todo", doneDate: null },
-      { id: uid(), text: "BOSS直聘投鲸豚健康", due: "2026-08-04", status: "done", doneDate: "2026-08-04" },
-      { id: uid(), text: "BOSS直聘投涵益科技（65-70/时）", due: "2026-08-06", status: "todo", doneDate: null },
-      { id: uid(), text: "安徽公共招聘网搜「陪诊」", due: "2026-08-06", status: "todo", doneDate: null },
-      { id: uid(), text: "闲鱼挂「合肥陪诊服务」", due: "2026-08-08", status: "todo", doneDate: null },
-      { id: uid(), text: "熟记安医大一附院楼层分布", due: "2026-08-15", status: "todo", doneDate: null },
-      { id: uid(), text: "小红书发第 1 篇陪诊日记", due: "2026-08-20", status: "todo", doneDate: null }
+      { id: "t1", text: "注册小豚陪诊（零基础首选，免费培训抢单）", due: "2026-08-20", status: "todo", doneDate: null },
+      { id: "t2", text: "注册悦伴陪诊（行业头部，实名+培训，持证优先）", due: "2026-08-21", status: "todo", doneDate: null },
+      { id: "t3", text: "注册赞多多陪诊（零抽成，实名+健康证，不收押金）", due: "2026-08-22", status: "todo", doneDate: null },
+      { id: "t4", text: "美团「上门陪诊」提交入驻（健康证+无犯罪记录+统一培训）", due: "2026-08-25", status: "todo", doneDate: null },
+      { id: "t5", text: "BOSS直聘投合肥导医/陪诊兼职（鲸豚健康、沈阳涵益合肥岗65-70元/时）", due: "2026-08-26", status: "todo", doneDate: null },
+      { id: "t6", text: "安徽公共招聘网搜「陪诊」并登记（政府背景免费）", due: "2026-08-28", status: "todo", doneDate: null },
+      { id: "t7", text: "入驻民爱陪诊（本地稳，覆盖安医大一附院/省立/滨湖三甲）", due: "2026-09-03", status: "todo", doneDate: null },
+      { id: "t8", text: "完成首单陪诊（小豚/悦伴抢单），积累第1条评价", due: "2026-09-05", status: "todo", doneDate: null },
+      { id: "t9", text: "熟记安医大一附院楼层分布（陪诊基本功）", due: "2026-09-08", status: "todo", doneDate: null },
+      { id: "t10", text: "关注安医大一附院等三甲陪护项目中标服务公司，主动联系入职（单最稳）", due: "2026-09-10", status: "todo", doneDate: null },
+      { id: "t11", text: "支付宝/京东健康入驻（若具备医护资质：护士证/护理员证）", due: "2026-09-12", status: "todo", doneDate: null },
+      { id: "t12", text: "小红书发第1篇陪诊日记（本地获客）", due: "2026-09-20", status: "todo", doneDate: null },
+      { id: "t13", text: "闲鱼挂「合肥陪诊服务」（私域引流）", due: "2026-09-22", status: "todo", doneDate: null },
+      { id: "t14", text: "首月（9月）攒满 10 条平台好评", due: "2026-10-01", status: "todo", doneDate: null },
+      { id: "t15", text: "复盘周单量与收入，确定 2-3 个主攻平台", due: "2026-10-10", status: "todo", doneDate: null },
+      { id: "t16", text: "冲刺月度稳定单（医院陪护项目/大厂定向派单）", due: "2026-10-16", status: "todo", doneDate: null }
     ]
   };
 }

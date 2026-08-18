@@ -6,7 +6,7 @@
 # 表格结构（A~L 列，第1行表头）：
 #   id | name | category | region | background | condition | fee | rating | tag | link | note | updated
 # 子表约定：file_id / sheet_id 见下方常量（建表时确定，一般不用改）。
-import json, csv, io, subprocess, sys, os
+import json, csv, io, subprocess, sys, os, datetime
 
 SKILL = r"C:\Users\YC1039\.workbuddy\plugins\cache\workbuddy-builtin\tencent-docs-plugin\1.0.0\skills\tencent-docs"
 FILE_ID = "ZLPnsrYSgVgU"          # 陪诊师接单资讯源
@@ -57,7 +57,7 @@ def main():
             item["rating"] = 0
         items.append(item)
 
-    out = {"updatedAt": __import__("datetime").datetime.utcnow().isoformat() + "Z", "items": items}
+    out = {"updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "items": items}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
     print("=== _source.json 已生成，共 %d 条 ===" % len(items))
