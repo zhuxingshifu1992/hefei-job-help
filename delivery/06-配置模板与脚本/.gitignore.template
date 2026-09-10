@@ -1,0 +1,19 @@
+# ===== 本项目 .gitignore（复刻时原样使用）=====
+# 重要：先写 .gitignore，再创建密钥文件。顺序反了 token 会被提交。
+
+# agent 工作区（记忆、技能、自动化配置，含会话上下文，不入库）
+.workbuddy/
+
+# GitHub PAT（密钥，绝对不能入库）
+tools/.gh_token
+
+# ===== 可选补充（按需启用）=====
+# 编辑器与系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 日志与临时文件
+*.log
+*.tmp
