@@ -10,7 +10,12 @@
 #   id | name | category | region | background | condition | fee | rating | tag | link | note | updated
 import json, csv, io, subprocess, sys, os
 
-SKILL = r"C:\Users\YC1039\.workbuddy\plugins\cache\workbuddy-builtin\tencent-docs-plugin\1.0.0\skills\tencent-docs"
+# 复用 fetch_tdoc 的插件版本自动发现：硬编码版本目录会因 token URL 拼法变化而 404
+# 取不到票据（见 decisionLog 决定 3），新增版本时无需改这里。
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fetch_tdoc import resolve_skill_dir
+
+SKILL = resolve_skill_dir()
 FILE_ID = "ZLPnsrYSgVgU"          # 陪诊师接单资讯源
 SHEET_ID = "BB08J2"               # 默认子表「工作表1」
 PROJECT = r"D:\帮老弟找工作项目"
