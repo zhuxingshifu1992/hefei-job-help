@@ -19,12 +19,22 @@
   </header>
 
   <main class="container">
+    <!-- 一键载入最新月度计划（不删已有计划与打勾记录） -->
+    <section class="section">
+      <div class="section__title">最新月度计划</div>
+      <div class="form-card">
+        <p class="hint" style="margin:0 0 10px">点一下即可载入「11 月稳定增收计划」（11/1-11/30，25 个任务）。不会删掉你已有的旧计划和打勾记录。</p>
+        <button class="btn btn--block" id="btnLoadMonth" type="button">一键载入 11 月计划</button>
+        <p class="hint" id="loadMonthMsg" style="margin:8px 0 0"></p>
+      </div>
+    </section>
+
     <!-- 新建计划 -->
     <section class="section">
       <div class="section__title">新建短期计划</div>
       <form class="form-card" id="newPlan">
         <label>计划名称</label>
-        <input name="title" placeholder="如：8 月接单突破" required>
+        <input name="title" placeholder="如：12 月稳定增收" required>
         <div style="display:flex;gap:10px">
           <div style="flex:1"><label>开始日期</label><input name="start" type="date" required></div>
           <div style="flex:1"><label>结束日期</label><input name="end" type="date" required></div>

@@ -4,12 +4,13 @@
  * 维护：任务字段见 store.js defaultPlan()；新增操作在事件委托里加。
  * ======================================================= */
 document.addEventListener("DOMContentLoaded", function () {
+  bindLoadMonth(); // 一键载入最新月度计划：先绑定，确保空数据时也能用
   var plans = Store.load("plans", []) || [];
 
   if (!plans.length) {
     document.getElementById("planList").innerHTML =
       '<div class="empty">还没有计划。' +
-      '<div style="margin-top:12px"><button class="btn" id="loadDemo">载入 30 天示例计划</button></div></div>';
+      '<div style="margin-top:12px"><button class="btn" id="loadDemo">载入 11 月计划</button></div></div>';
     document.getElementById("loadDemo").addEventListener("click", function () {
       Store.save("plans", [defaultPlan()]);
       location.reload();
@@ -150,5 +151,54 @@ function checkSvg() {
 function esc(s) {
   return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+
+/* ---------- 一键载入最新月度计划 ----------
+ * 从站点拉取 plan-import.json，把里面的月度计划追加进来（按 id 去重）。
+ * 注意：只追加、不覆盖，保留用户已有计划与打勾记录；完成后整页刷新一次。
+ */
+function bindLoadMonth() {
+  var btn = document.getElementById("btnLoadMonth");
+  if (!btn) return;
+  var msg = document.getElementById("loadMonthMsg");
+  function say(t) { if (msg) msg.textContent = t || ""; }
+
+  btn.addEventListener("click", function () {
+    btn.disabled = true;
+    say("正在获取最新计划…");
+    fetch("plan-import.json", { cache: "no-store" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (payload) {
+        var raw = payload && payload.wb_jobsearch_plans;
+        if (!raw) throw new Error("文件格式不对");
+        var incoming = JSON.parse(raw);
+        if (!incoming || !incoming.length) throw new Error("计划内容为空");
+        var target = incoming[0];
+        var plans = Store.load("plans", []) || [];
+        var exists = plans.some(function (p) { return p.id === target.id; });
+        if (exists) {
+          say("这份计划已经在你手机里了：" + target.title);
+          btn.disabled = false;
+          return;
+        }
+        if (!confirm("载入「" + target.title + "」？\n共 " + (target.tasks || []).length +
+                     " 个任务，不会删除你已有的计划。")) {
+          say("已取消。");
+          btn.disabled = false;
+          return;
+        }
+        plans.push(target);
+        Store.save("plans", plans);
+        say("已载入，正在刷新…");
+        location.reload();
+      })
+      .catch(function (e) {
+        say("载入失败：" + e.message + "。可改用右上角「导入」选择 plan-import.json。");
+        btn.disabled = false;
+      });
   });
 }
