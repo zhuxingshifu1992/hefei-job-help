@@ -4,3 +4,5 @@ tools/.gh_token
 # Python 编译缓存
 __pycache__/
 *.pyc
+
+tools/.proxy
