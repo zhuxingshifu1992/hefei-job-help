@@ -15,6 +15,9 @@
 - [x] 建立「陪诊平台主动巡检」每两周自动化（automation-1785980498191），定期联网搜新平台并自动加+发布
 - [x] 创建项目级 skill「peizhen-proactive-scan」：把主动巡检流程固化为可复用入口，用户随时一句话触发一次完整巡检（搜索→筛选→加数据→同步腾讯文档→生成→推送），与每两周自动化 automation-1785980498191 互补；已通过 skill 格式校验
 - [x] 2026-08-18 重启：暂停每日自动更新（automation-1785898412205→PAUSED）；全量重新爬取腾讯文档最新资讯（_source.json 55 条 / info.json 刷新）；制定「合肥陪诊师 60 天落地计划（2026秋）」覆盖原 30 天示例计划，产出 plan-import.json + 求职计划.md，并更新 store.js 默认计划
+- [x] 2026-10-29 资讯刷新：主动巡检新增 14 个核验平台（总数 81），随后清理 15 条空名占位行，最终 **66 条**；已推送上线并线上核验（items=66、占位 id 全无）
+- [x] 2026-10-29 修复推送链路：定位「沙箱无法访问 github.com + git 不读系统代理」双根因；push.bat 升级为自动探测本机 VPN 代理端口（curl 试 7890/10809 等）、失败如实报 [FAIL]、无论成败清 remote token；tools/.proxy 可手动指定端口并已 gitignore
+- [x] 2026-10-29 计划整体更新：新增 tools/gen_plan.py（单一数据源生成 plan-import.json / store.js defaultPlan / 求职计划.md）；制定「11 月稳定增收计划」（p202611，11/1-11/30，25 任务，4 周阶段）；plan.html 新增「一键载入 11 月计划」按钮（fetch plan-import.json → 按 id 去重 → 只追加不覆盖），弟弟无需碰文件；已推送 f9e87e6
 
 ## 进行中
 - [ ] GitHub PAT 安全复核：审计已完成（git 历史/远端/仓库均无真实 token 泄露；token 仅存本地 tools/.gh_token 且已 gitignore；scope 为最小 Fine-grained「Contents RW + Pages RW」）。是否实际轮换待用户决定。

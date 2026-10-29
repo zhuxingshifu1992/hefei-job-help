@@ -110,3 +110,22 @@ function defaultPlan() {
 
 /* 页面加载即执行首跑播种 */
 Store.bootstrap();
+
+/* ---------- 一次性迁移：只保留「本月计划」，清掉所有历史计划 ----------
+ * 触发条件：该设备尚未针对当前计划 id 迁移过（flag = wb_jobsearch_migrated_<planId>）
+ * 效果：删除除本月计划外的全部计划（含旧 60 天冲刺计划），若没有本月计划则自动补上。
+ * 说明：flag 绑定计划 id，换月后 id 变化会自动再清一次，无需改代码。
+ *       每台设备只执行一次，之后用户自己新建的计划不会被反复删掉。
+ */
+(function migratePlansToCurrentMonth() {
+  try {
+    var cur = defaultPlan();
+    var flag = NS + "migrated_" + cur.id;
+    if (localStorage.getItem(flag)) return;
+    var plans = Store.load("plans", []) || [];
+    var keep = plans.filter(function (p) { return p && p.id === cur.id; });
+    if (!keep.length) keep = [cur];
+    Store.save("plans", keep);
+    localStorage.setItem(flag, "1");
+  } catch (e) { /* 迁移失败不影响页面正常使用 */ }
+})();

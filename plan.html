@@ -19,12 +19,12 @@
   </header>
 
   <main class="container">
-    <!-- 一键载入最新月度计划（不删已有计划与打勾记录） -->
+    <!-- 本月计划：只保留本月这一份，历史计划自动清理 -->
     <section class="section">
-      <div class="section__title">最新月度计划</div>
+      <div class="section__title">本月计划</div>
       <div class="form-card">
-        <p class="hint" style="margin:0 0 10px">点一下即可载入「11 月稳定增收计划」（11/1-11/30，25 个任务）。不会删掉你已有的旧计划和打勾记录。</p>
-        <button class="btn btn--block" id="btnLoadMonth" type="button">一键载入 11 月计划</button>
+        <p class="hint" style="margin:0 0 10px">只保留「11 月稳定增收计划」（11/1-11/30，25 个任务）。打开本页会自动清掉历史计划；点下面按钮可手动重置（会清空打勾记录）。</p>
+        <button class="btn btn--block" id="btnLoadMonth" type="button">重置为 11 月计划（清空历史）</button>
         <p class="hint" id="loadMonthMsg" style="margin:8px 0 0"></p>
       </div>
     </section>
